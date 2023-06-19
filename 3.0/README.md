@@ -15,6 +15,7 @@ Lastly it will clear all nginx, object and blade cache.
 | Parameter name              | Description                                                                  | Required |
 |-----------------------------|------------------------------------------------------------------------------|----------|
 | deploy-host                 | Host domain or ip                                                            | true     |
+| deploy-port                 | Host ssh port                                                                | false    |
 | deploy-host-path            | Host deployment path                                                         | true     |
 | deploy-host-backup-path     | Host rsync backup path                                                       | true     |
 | deploy-host-user            | Host deploy ssh user name                                                    | true     |
@@ -53,7 +54,8 @@ jobs:
 
     - uses: helsingborg-stad/municipio-deploy/3.0@master
       with:
-        deploy-host: ${{ secrets.DEPLOY_REMOTE_HOST_PROD }}
+        deploy-host: ${{ secrets.DEPLOY_REMOTE_HOST_DOMAIN_SE }}
+        deploy-host-path: ${{ secrets.DEPLOY_REMOTE_PORT_DOMAIN_SE }}
         deploy-host-path: ${{ secrets.DEPLOY_REMOTE_PATH_DOMAIN_SE }}
         deploy-host-backup-path: ${{ secrets.DEPLOY_REMOTE_BACKUP_DIR_DOMAIN_SE }}
         deploy-host-user: ${{ secrets.DEPLOY_REMOTE_USER }}
